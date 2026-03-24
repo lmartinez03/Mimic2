@@ -1,30 +1,59 @@
 {
   "expo": {
     "name": "Mimic",
-    "slug": "Mimic",
+    "slug": "mimic",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0A0A0F",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0A0A0F"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.mimic.app",
+      "newArchEnabled": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Mimic needs camera access to record your videos.",
+        "NSMicrophoneUsageDescription": "Mimic needs microphone access to record video with audio.",
+        "NSPhotoLibraryUsageDescription": "Mimic needs photo library access to upload videos."
+      }
     },
     "android": {
+      "package": "com.mimic.app",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#0A0A0F"
       },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_EXTERNAL_STORAGE"
+      ],
       "predictiveBackGestureEnabled": false
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Mimic needs camera access to record your videos.",
+          "microphonePermission": "Mimic needs microphone access to record video with audio.",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Mimic needs photo library access to upload videos."
+        }
+      ]
+    ]
   }
 }
